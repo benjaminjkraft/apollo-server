@@ -17,7 +17,8 @@ function triggerKnownError(logger: Logger) {
   // This is a bit britle since it merely leverages a known debug log
   // message outside of the constructor, but it seemed worth testing
   // the compatibility with `ApolloGateway` itself rather than genericly.
-  new ApolloGateway({ logger }).load();
+  // The error does not matter, so it is caught and ignored.
+  new ApolloGateway({ logger }).load().catch(_e => {});
 }
 
 describe("logger", () => {
